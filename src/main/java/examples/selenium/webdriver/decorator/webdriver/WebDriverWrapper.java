@@ -1,4 +1,4 @@
-package examples.selenium.webdriver.decorator.webelement;
+package examples.selenium.webdriver.decorator.webdriver;
 
 import java.util.List;
 import java.util.Set;
@@ -9,75 +9,75 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class WebDriverWrapper implements WebDriver {
-    final Logger logger = Logger.getLogger(WebDriverWrapper.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(WebDriverWrapper.class.getName());
 
-    private WebDriver driver;
+    private final WebDriver driver;
     public WebDriverWrapper(final WebDriver driver) {
         this.driver = driver;
     }
     @Override
     public void get(final String url) {
-        logger.info("get: " + url);
+        LOGGER.info("get: " + url);
         driver.get(url);
     }
     @Override
     public String getCurrentUrl() {
-        logger.info("getCurrentUrl");
+        LOGGER.info("getCurrentUrl");
         return driver.getCurrentUrl();
     }
     @Override
     public String getTitle() {
-        logger.info("getTitle");
+        LOGGER.info("getTitle");
         return driver.getTitle();
     }
     @Override
     public List<WebElement> findElements(final By by) {
-        logger.info("findElements in driver wrapper: " + by);
+        LOGGER.info("findElements in driver wrapper: " + by);
         return driver.findElements(by);
     }
     @Override
     public WebElement findElement(final By by) {
-        logger.info("findElement in driver wrapper: " + by);
+        LOGGER.info("findElement in driver wrapper: " + by);
         return driver.findElement(by);
     }
     @Override
     public String getPageSource() {
-        logger.info("getPageSource");
+        LOGGER.info("getPageSource");
         return driver.getPageSource();
     }
     @Override
     public void close() {
-        logger.info("close");
+        LOGGER.info("close");
         driver.close();
     }
     @Override
     public void quit() {
-        logger.info("quit");
+        LOGGER.info("quit");
         driver.quit();
     }
     @Override
     public Set<String> getWindowHandles() {
-        logger.info("getWindowHandles");
+        LOGGER.info("getWindowHandles");
         return driver.getWindowHandles();
     }
     @Override
     public String getWindowHandle() {
-        logger.info("getWindowHandle");
+        LOGGER.info("getWindowHandle");
         return driver.getWindowHandle();
     }
     @Override
     public TargetLocator switchTo() {
-        logger.info("switchTo");
+        LOGGER.info("switchTo");
         return driver.switchTo();
     }
     @Override
     public Navigation navigate() {
-        logger.info("navigate");
+        LOGGER.info("navigate");
         return driver.navigate();
     }
     @Override
     public Options manage() {
-        logger.info("manage");
+        LOGGER.info("manage");
         return driver.manage();
     }
 }

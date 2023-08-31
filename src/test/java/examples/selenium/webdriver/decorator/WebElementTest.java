@@ -2,6 +2,7 @@ package examples.selenium.webdriver.decorator;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import examples.selenium.webdriver.decorator.webelement.WebElementDecorator;
@@ -9,14 +10,14 @@ import examples.selenium.webdriver.decorator.webelement.WebElementDecorator;
 public class WebElementTest {
     @Test
     public void decorateWebElement() {
-        final var driver = new ChromeDriver();
+        final WebDriver driver = new ChromeDriver();
         final var decoratedDriver = new WebElementDecorator().decorate(driver);
         decoratedDriver.get("https://google.com");
         final var searchBox = decoratedDriver.findElement(By.cssSelector("#APjFqb"));
         searchBox.click();
         /* - WebElementDecorator will log beforeCall and afterCall in decorated web element.
 
-        - Overview of whats happening
+        - Overview of what's happening
         Overriding createDecorated(WebElement) will apply wrapper to the WebElement.
         In this case findElement is not applicable since it is called from the WebDriver context.
         It is possible to override findElement and findElements in the WebDriverDecorator
